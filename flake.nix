@@ -25,7 +25,12 @@
             nativeBuildInputs = with pkgs; [
               ghdl
               gtkwave
-              nvc
+              yosys
+              yosys-ghdl
+
+              xdot # needed by yosys to show graphs
+              netlistsvg
+
               vhdl-ls
             ];
 
