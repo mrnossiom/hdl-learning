@@ -1,7 +1,6 @@
-entity fulladder_tb is
-end fulladder_tb;
+entity fulladder_tb is end;
 
-architecture behav of fulladder_tb is
+architecture behavior of fulladder_tb is
   component fulladder
     port (i0, i1 : in bit; ci : in bit; s : out bit; co : out bit);
   end component;
@@ -44,4 +43,4 @@ begin
 
     wait;
   end process;
-end behav;
+end behavior;
