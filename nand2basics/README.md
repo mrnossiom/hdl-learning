@@ -12,7 +12,7 @@ ghdl analyze src/*.vhdl
 ghdl elab-run entity_name
 
 # export a wavefile
-ghdl elab-run entity_name --vcd=name.vcd
+ghdl elab-run entity_name --vcd=name.vcf
 gtkwave name.vcd
 
 # use yosys to analyze component
@@ -30,10 +30,10 @@ This project contain code for the following gates:
 
   - Basic gates
 
-    - `not`
-    - `and`
-    - `or`
-    - `xor`
+    - `not_gate`
+    - `and_gate`
+    - `or_gate`
+    - `xor_gate`
     - `mux`
     - `demux`
 

@@ -1,4 +1,23 @@
-entity fulladder_tb is end;
+entity fulladder is
+  port (
+    i0, i1 : in bit; -- terms
+    ci : in bit; -- carry-in
+
+    s : out bit; -- sum
+    co : out bit -- carry-out
+  );
+end entity;
+
+architecture rtl of fulladder is
+begin
+  s <= i0 xor i1 xor ci;
+  co <= (i0 and i1) or (i0 and ci) or (i1 and ci);
+end architecture;
+
+--
+
+entity fulladder_tb is
+end entity;
 
 architecture behavior of fulladder_tb is
   component fulladder
@@ -43,4 +62,4 @@ begin
 
     wait;
   end process;
-end behavior;
+end architecture;
