@@ -2,5 +2,5 @@ standard = "2008"
 
 [libraries]
 work.files = [
-    'src/*.vhdl',
+    'src/*.vhd',
 ]

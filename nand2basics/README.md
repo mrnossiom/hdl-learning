@@ -28,7 +28,7 @@ This project contain code for the following gates:
 
 - Basics
 
-  - Basic gates
+  - Basic gates (nand composition)
 
     - `not_gate`
     - `and_gate`
