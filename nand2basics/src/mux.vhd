@@ -1,4 +1,4 @@
-entity mux_gate is
+entity mux is
   port (
     a, b : in bit;
     -- 0 is a, 1 is b
@@ -7,21 +7,29 @@ entity mux_gate is
   );  
 end entity;
 
-architecture structural of mux_gate is
+-- architecture structural of mux_gate is
+--   signal ns : bit;
+--   -- filtered a and b
+--   signal fa, fb : bit;
+-- begin
+--   not_0: entity work.not_gate(structural) port map (a => s, q => ns);
+
+--   a_filter: entity work.and_gate(structural)
+--     port map(a => a, b => ns, q => fa);
+--   b_filter: entity work.and_gate(structural)
+--     port map(a => b, b => s, q => fb);
+
+--   or_0: entity work.or_gate(structural)
+--     port map(a => fa, b => fb, q => q);
+-- end architecture;
+
+architecture rtl of mux is
   signal ns : bit;
   -- filtered a and b
   signal fa, fb : bit;
 begin
-  not_0: entity work.not_gate(structural) port map (a => s, q => ns);
-
-  a_filter: entity work.and_gate(structural)
-    port map(a => a, b => ns, q => fa);
-  b_filter: entity work.and_gate(structural)
-    port map(a => b, b => s, q => fb);
-
-  or_0: entity work.or_gate(structural)
-    port map(a => fa, b => fb, q => q);
-end structural;
+  q <= (a and (not s)) or (b and s);
+end architecture;
 
 --
 
@@ -31,7 +39,7 @@ end entity;
 architecture behavior of mux_gate_tb is
   signal a, b, s, q : bit;
 begin
-  mux_0: entity work.mux_gate(structural) port map (a => a, b => b, s => s, q => q);
+  mux_0: entity work.mux(rtl) port map (a => a, b => b, s => s, q => q);
   
   process is
   begin
@@ -45,4 +53,3 @@ begin
     wait;
   end process;
 end architecture;
-

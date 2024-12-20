@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, nixpkgs }:
@@ -34,7 +34,7 @@
               vhdl-ls
             ];
 
-            buildInputs = with pkgs; [ ];
+            buildInputs = [ ];
 
             LD_LIBRARY_PATH = makeLibraryPath buildInputs;
           };

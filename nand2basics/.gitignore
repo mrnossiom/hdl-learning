@@ -1,5 +1,5 @@
 # Workfile (GHDL)
-work-obj93.cf
+*-obj*.cf
 
 # Netlist files
 *.netlist.json

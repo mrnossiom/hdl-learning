@@ -1,4 +1,4 @@
-entity demux_gate is
+entity demux is
   port (
     a : in bit;
     -- 0 is q, 1 is r
@@ -7,17 +7,24 @@ entity demux_gate is
   );  
 end entity;
 
-architecture structural of demux_gate is
+-- architecture structural of demux_gate is
+--   signal ns : bit;
+-- begin
+--   not_0: entity work.not_gate(structural)
+--     port map(a => s, q => ns);
+
+--   and_q: entity work.and_gate(structural)
+--    port map(a => a, b => ns, q => q);
+--   and_r: entity work.and_gate(structural)
+--    port map(a => a, b => s, q => r);
+-- end architecture;
+
+architecture rtl of demux is
   signal ns : bit;
 begin
-  not_0: entity work.not_gate(structural)
-    port map(a => s, q => ns);
-
-  and_q: entity work.and_gate(structural)
-   port map(a => a, b => ns, q => q);
-  and_r: entity work.and_gate(structural)
-   port map(a => a, b => s, q => r);
-end structural;
+  q <= a and (not s);
+  r <= a and s;
+end architecture;
 
 --
 
@@ -27,7 +34,7 @@ end entity;
 architecture behavior of demux_gate_tb is
   signal a, s, q, r : bit;
 begin
-  demux_0: entity work.demux_gate(structural) port map (a => a, s => s, q => q, r => r);
+  demux_0: entity work.demux(rtl) port map (a => a, s => s, q => q, r => r);
   
   process is
   begin
@@ -39,5 +46,3 @@ begin
     wait;
   end process;
 end architecture;
-
-

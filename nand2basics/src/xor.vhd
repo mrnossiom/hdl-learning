@@ -36,4 +36,3 @@ begin
     wait;
   end process;
 end architecture;
-
